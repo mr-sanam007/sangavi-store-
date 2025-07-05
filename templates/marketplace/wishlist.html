@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Wishlist{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+<div class="wishlist-container">
+  <h2 class="wishlist-title">Your Wishlist</h2>
+  <div id="wishlist-items" class="wishlist-items">
+    <!-- Wishlist items will be dynamically inserted here -->
+    <div class="wishlist-empty">
+      <img src="{% static 'images/empty-wishlist.svg' %}" alt="Empty Wishlist" class="wishlist-empty-img">
+      <p>Your wishlist is empty. Start adding your favorite products!</p>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/wishlist.js' %}"></script>
+{% endblock %} 

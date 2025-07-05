@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-text">
+      <h1>
+        Discover Your Style
+        <span class="highlight">Trendy Clothes for Every Occasion</span>
+      </h1>
+      <p>
+        Shop the latest fashion for men, women, and kids. Quality, comfort,
+        and style all in one place.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Shop Now</a>
+        <a href="#" class="btn-outline">Explore Collection</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="{% static 'images/hero.jpg' %}"
+        alt="Woman wearing trendy clothes standing confidently, fashion hero image"
+        width="600"
+        height="400"
+      />
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" aria-label="Shop by category">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      <a href="#" class="category-card" aria-label="Men category">
+        <img
+          src="{% static 'images/men-category.jpg' %}"
+          alt="Men's clothing category image showing casual and formal wear"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">Men</div>
+      </a>
+      <a href="#" class="category-card" aria-label="Women category">
+        <img
+          src="{% static 'images/women-category.jpg' %}"
+          alt="Women's clothing category image showing stylish dresses and tops"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">Women</div>
+      </a>
+      <a href="#" class="category-card" aria-label="Kids category">
+        <img
+          src="{% static 'images/kids-category.jpg' %}"
+          alt="Kids clothing category image showing colorful and playful outfits"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">Kids</div>
+      </a>
+      <a href="#" class="category-card" aria-label="Home category">
+        <img
+          src="{% static 'images/home-category.jpg' %}"
+          alt="Home essentials category image showing cozy home textiles and decor"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">Home</div>
+      </a>
+      <a href="#" class="category-card" aria-label="Beauty category">
+        <img
+          src="{% static 'images/beauty-category.jpg' %}"
+          alt="Beauty products category image showing skincare and makeup items"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">Beauty</div>
+      </a>
+      <a href="#" class="category-card" aria-label="GenZ category">
+        <img
+          src="{% static 'images/genz-category.jpg' %}"
+          alt="GenZ trends category image showing trendy and youthful fashion items"
+          width="300"
+          height="120"
+        />
+        <div class="category-name">GenZ</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="featured-products" aria-label="Featured products">
+    <h2>Featured Products</h2>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <article class="product-card" aria-label="Men's Stylish Jacket, $79.99">
+        <img
+          src="{% static 'images/product1.jpg' %}"
+          alt="Men's stylish jacket product image"
+          class="product-image"
+          width="400"
+          height="260"
+        />
+        <div class="product-icons" role="group" aria-label="Product actions">
+          <button aria-label="Add to wishlist" class="icon-button">
+            <i class="far fa-heart"></i>
+          </button>
+          <button aria-label="View product" class="icon-button">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button aria-label="Add to cart" class="icon-button">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Men's Stylish Jacket</h3>
+          <p class="product-price">$79.99</p>
+        </div>
+      </article>
+      <!-- Product 2 -->
+      <article class="product-card" aria-label="Elegant Women's Dress, $59.99">
+        <img
+          src="{% static 'images/product2.jpg' %}"
+          alt="Elegant women's dress product image"
+          class="product-image"
+          width="400"
+          height="260"
+        />
+        <div class="product-icons" role="group" aria-label="Product actions">
+          <button aria-label="Add to wishlist" class="icon-button">
+            <i class="far fa-heart"></i>
+          </button>
+          <button aria-label="View product" class="icon-button">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button aria-label="Add to cart" class="icon-button">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Elegant Women's Dress</h3>
+          <p class="product-price">$59.99</p>
+        </div>
+      </article>
+      <!-- Product 3 -->
+      <article class="product-card" aria-label="Colorful Kids T-shirt, $19.99">
+        <img
+          src="{% static 'images/product3.jpg' %}"
+          alt="Colorful kids t-shirt product image"
+          class="product-image"
+          width="400"
+          height="260"
+        />
+        <div class="product-icons" role="group" aria-label="Product actions">
+          <button aria-label="Add to wishlist" class="icon-button">
+            <i class="far fa-heart"></i>
+          </button>
+          <button aria-label="View product" class="icon-button">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button aria-label="Add to cart" class="icon-button">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Colorful Kids T-shirt</h3>
+          <p class="product-price">$19.99</p>
+        </div>
+      </article>
+      <!-- Product 4 -->
+      <article class="product-card" aria-label="Beauty Skincare Set, $39.99">
+        <img
+          src="{% static 'images/product4.jpg' %}"
+          alt="Beauty skincare set product image"
+          class="product-image"
+          width="400"
+          height="260"
+        />
+        <div class="product-icons" role="group" aria-label="Product actions">
+          <button aria-label="Add to wishlist" class="icon-button">
+            <i class="far fa-heart"></i>
+          </button>
+          <button aria-label="View product" class="icon-button">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button aria-label="Add to cart" class="icon-button">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Beauty Skincare Set</h3>
+          <p class="product-price">$39.99</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter" aria-label="Newsletter subscription">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to our newsletter for the latest deals and new arrivals.</p>
+    <form>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        aria-label="Enter your email"
+        required
+      />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+{% endblock %}

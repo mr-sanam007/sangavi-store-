@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="cart-container">
+  <h2 class="cart-title">Your Cart</h2>
+  <div id="cart-items" class="cart-items">
+    <!-- Cart items will be dynamically inserted here -->
+    <div class="cart-empty">
+      <img src="{% static 'images/empty-cart.svg' %}" alt="Empty Cart" class="cart-empty-img">
+      <p>Your cart is empty. Start adding products to your cart!</p>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %} 

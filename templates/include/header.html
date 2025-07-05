@@ -1,0 +1,114 @@
+{% load static %}
+<header>
+    <div class="header-inner">
+      <a href="{% url 'home' %}" class="logo" aria-label="Homepage">
+        <img
+          src="{% static 'images/logo.jpg' %}"
+          alt="M logo with pink and orange colors"
+          width="40"
+          height="40"
+        />
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="/marketplace/">Marketplace</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search for products, brands and more"
+          aria-label="Search for products, brands and more"
+        />
+        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+      </div>
+      <div class="right-icons">
+        <div class="profile-dropdown-container">
+          <a href="#" aria-label="Profile" id="profile-icon">
+            <i class="far fa-user"></i>
+            Profile
+          </a>
+          <div class="profile-dropdown" id="profile-dropdown" style="display: none; position: absolute; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); right: 0; z-index: 1000; min-width: 120px;">
+            <a href="{% url 'login' %}" style="display: block; padding: 10px 16px; color: #333; text-decoration: none;">Login</a>
+            <a href="{% url 'signup' %}" style="display: block; padding: 10px 16px; color: #333; text-decoration: none;">Sign Up</a>
+          </div>
+        </div>
+        <a href="{% url 'wishlist' %}" aria-label="Wishlist" class="{% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}">
+          <i class="{% if request.resolver_match.url_name == 'wishlist' %}fas{% else %}far{% endif %} fa-heart" style="color: {% if request.resolver_match.url_name == 'wishlist' %}#d6336c{% endif %};"></i>
+          Wishlist
+        </a>
+        <a href="{% url 'cart' %}" aria-label="Bag" class="{% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
+          <i class="fas fa-shopping-bag" style="color: {% if request.resolver_match.url_name == 'cart' %}#d6336c{% endif %};"></i>
+          Bag
+        </a>
+      </div>
+      <button
+        class="mobile-menu-button"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        id="mobile-menu-button"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="{% url 'home' %}" class="active">Home</a>
+      <a href="/marketplace/">Marketplace</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <div class="icons-row">
+        <div class="profile-dropdown-container">
+          <a href="#" aria-label="Profile" id="mobile-profile-icon">
+            <i class="far fa-user"></i>
+            Profile
+          </a>
+          <div class="profile-dropdown" id="mobile-profile-dropdown" style="display: none; position: absolute; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); right: 0; z-index: 1000; min-width: 120px;">
+            <a href="{% url 'login' %}" style="display: block; padding: 10px 16px; color: #333; text-decoration: none;">Login</a>
+            <a href="{% url 'signup' %}" style="display: block; padding: 10px 16px; color: #333; text-decoration: none;">Sign Up</a>
+          </div>
+        </div>
+        <a href="{% url 'wishlist' %}" aria-label="Wishlist" class="{% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}">
+          <i class="{% if request.resolver_match.url_name == 'wishlist' %}fas{% else %}far{% endif %} fa-heart" style="color: {% if request.resolver_match.url_name == 'wishlist' %}#d6336c{% endif %};"></i>
+          Wishlist
+        </a>
+        <a href="{% url 'cart' %}" aria-label="Bag" class="{% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
+          <i class="fas fa-shopping-bag" style="color: {% if request.resolver_match.url_name == 'cart' %}#d6336c{% endif %};"></i>
+          Bag
+        </a>
+      </div>
+    </nav>
+  </header>
+<script>
+// Profile dropdown toggle (desktop)
+document.addEventListener('DOMContentLoaded', function() {
+  var profileIcon = document.getElementById('profile-icon');
+  var profileDropdown = document.getElementById('profile-dropdown');
+  if (profileIcon && profileDropdown) {
+    profileIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      profileDropdown.style.display = (profileDropdown.style.display === 'block') ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(e) {
+      if (!profileIcon.contains(e.target) && !profileDropdown.contains(e.target)) {
+        profileDropdown.style.display = 'none';
+      }
+    });
+  }
+  // Profile dropdown toggle (mobile)
+  var mobileProfileIcon = document.getElementById('mobile-profile-icon');
+  var mobileProfileDropdown = document.getElementById('mobile-profile-dropdown');
+  if (mobileProfileIcon && mobileProfileDropdown) {
+    mobileProfileIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      mobileProfileDropdown.style.display = (mobileProfileDropdown.style.display === 'block') ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(e) {
+      if (!mobileProfileIcon.contains(e.target) && !mobileProfileDropdown.contains(e.target)) {
+        mobileProfileDropdown.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
