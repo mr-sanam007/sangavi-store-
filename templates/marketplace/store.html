@@ -1,73 +1,96 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<div class="container store-page">
-  <div class="store-layout">
-    <!-- Filter Sidebar -->
-    <aside class="store-sidebar">
-      <h3>Filters</h3>
-      <form method="get" class="filter-form">
-        <div class="form-group">
-          <label for="category">Category</label>
-          <input type="text" id="category" name="category" placeholder="Search category">
+<link rel="stylesheet" href="{% static 'css/store.css' %}">
+<div class="container" role="main">
+  <h2>SHOP</h2>
+  <!-- Controls (top) -->
+  <div aria-label="Top controls" class="controls">
+    <div aria-label="View mode" class="controls-left" role="group">
+      <button aria-label="Grid view" aria-pressed="true" class="btn-icon">
+        <i class="fas fa-th"></i>
+      </button>
+      <button aria-label="List view" aria-pressed="false" class="btn-icon inactive">
+        <i class="fas fa-list"></i>
+      </button>
+    </div>
+    <div class="controls-center" style="display:flex; gap:12px; align-items:center;">
+      <label for="sort-top">Sort by latest</label>
+      <select aria-label="Sort products" id="sort-top" name="sort-top">
+        <option>Sort by latest</option>
+      </select>
+      <label for="show-top">Show</label>
+      <select aria-label="Number of products to show" id="show-top" name="show-top">
+        <option>12</option>
+      </select>
+    </div>
+    <div aria-label="Pagination" class="pagination">
+      <span aria-current="page">1</span>
+      <button aria-label="Next page">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  <div aria-label="Product list" class="grid" role="list">
+    {% for product in products %}
+    <article class="card" role="listitem">
+      <div class="img-wrapper">
+        {% if product.image %}
+        <img alt="{{ product.name }}" height="150" src="{{ product.image.url }}" width="150"/>
+        {% else %}
+        <img alt="No image" height="150" src="{% static 'images/denim.png' %}" width="150"/>
+        {% endif %}
+        {# Discount badge placeholder: implement logic if you add discount field #}
+        {# <div class="discount-badge">-10%</div> #}
+        <div aria-label="View product details" class="eye-overlay" tabindex="0">
+          <i class="fas fa-eye"></i>
         </div>
-        <div class="form-group">
-          <label for="min_price">Min Price</label>
-          <input type="number" id="min_price" name="min_price" min="0">
-        </div>
-        <div class="form-group">
-          <label for="max_price">Max Price</label>
-          <input type="number" id="max_price" name="max_price" min="0">
-        </div>
-        <button type="submit" class="btn-primary">Apply Filters</button>
-      </form>
-    </aside>
-    <!-- Product Grid -->
-    <section class="store-main">
-      <div class="store-header">
-        <h2>Store</h2>
-        <form method="get" class="sort-form">
-          <label for="sort">Sort by:</label>
-          <select name="sort" id="sort">
-            <option value="">Default</option>
-            <option value="price_asc">Price: Low to High</option>
-            <option value="price_desc">Price: High to Low</option>
-            <option value="name_asc">Name: A-Z</option>
-            <option value="name_desc">Name: Z-A</option>
-          </select>
-          <button type="submit" class="btn-outline">Sort</button>
-        </form>
       </div>
-      <div class="products-grid">
-        {% for product in products %}
-        <div class="product-card">
-          <div class="product-image">
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% else %}
-            <img src="https://via.placeholder.com/300x200?text=No+Image" alt="No Image">
-            {% endif %}
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">{{ product.name }}</h3>
-            <p class="product-description">{{ product.description|truncatewords:15 }}</p>
-            <div class="product-meta">
-              <span class="product-price">${{ product.price }}</span>
-              <span class="product-category">{{ product.category }}</span>
-            </div>
-            <div class="product-icons">
-              <button class="icon-button add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-              <button class="icon-button add-to-wishlist"><i class="far fa-heart"></i> Wishlist</button>
-            </div>
-          </div>
-        </div>
-        {% empty %}
-        <div class="no-products">
-          <p>No products found.</p>
-        </div>
-        {% endfor %}
+      <p class="desc">{{ product.description|truncatechars:40 }}</p>
+      <p class="price">
+        ${{ product.price }}
+        {# Old price placeholder: implement logic if you add old_price field #}
+        {# <del>$300.00</del> #}
+      </p>
+      <div class="btn-group">
+        <button class="btn-cart" type="button">
+          <i class="fas fa-shopping-cart"></i>
+          ADD TO CART
+        </button>
+        <button aria-label="Add to wishlist" class="btn-wishlist" type="button">
+          <i class="far fa-heart"></i>
+        </button>
       </div>
-    </section>
+    </article>
+    {% endfor %}
+  </div>
+  <!-- Controls (bottom) -->
+  <div aria-label="Bottom controls" class="controls" style="margin-top:12px;">
+    <div aria-label="View mode" class="controls-left" role="group">
+      <button aria-label="Grid view" aria-pressed="true" class="btn-icon">
+        <i class="fas fa-th"></i>
+      </button>
+      <button aria-label="List view" aria-pressed="false" class="btn-icon inactive">
+        <i class="fas fa-list"></i>
+      </button>
+    </div>
+    <div class="controls-center" style="display:flex; gap:12px; align-items:center;">
+      <label for="sort-bottom">Sort by latest</label>
+      <select aria-label="Sort products" id="sort-bottom" name="sort-bottom">
+        <option>Sort by latest</option>
+      </select>
+      <label for="show-bottom">Show</label>
+      <select aria-label="Number of products to show" id="show-bottom" name="show-bottom">
+        <option>12</option>
+      </select>
+    </div>
+    <div aria-label="Pagination" class="pagination">
+      <span aria-current="page">1</span>
+      <button aria-label="Next page">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
   </div>
 </div>
 {% endblock %} 

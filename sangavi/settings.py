@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'marketplace',
 ]
 
+AUTH_USER_MODEL = 'Accounts.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
